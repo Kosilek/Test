@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
 {
     public GameObject gameManagerObject;
     private Character character;
-  //  private Character.MoovCharacter moovCharater;
-    private HP hp;
-    private Damage damage;
+
+    public GameObject bullet;
+    public Transform firePoint;
 
     private Rigidbody2D rb;
 
@@ -23,31 +23,29 @@ public class Player : MonoBehaviour
 
     private Animator anim;
 
-    [SerializeField] private float hpPlayer;
-    [SerializeField] private float dmgPlayer;
     private void Awake()
     {
         Physics2D.queriesStartInColliders = false;
     }
     private void Start()
     {
-        hp = gameManagerObject.GetComponent<HP>();
-        damage = gameManagerObject.GetComponent<Damage>();
         anim = GetComponent<Animator>();
         character = gameManagerObject.GetComponent<Character>();
-      //  moovCharater = gameManagerObject.GetComponent<Character.MoovCharacter>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        hpPlayer = hp.hp;
-        dmgPlayer = hp.dmg;
         character.SetAnimatorJump(anim, isGrounder, rb);
         CheckingGround();
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
             character.Jump(rb, vSpeed, isGrounder);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            character.Shoot(bullet, firePoint);
         }
     }
 
@@ -87,7 +85,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Health>())
+        {
+            gameObject.GetComponent<Health>().TakeDamage(collision.gameObject.GetComponent<Health>().damage, gameObject, gameObject.GetComponent<Health>().anim);
+            if (gameObject.GetComponent<Health>().health <= 0)
+            {
+                
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Coins>())
+        {
+            collision.gameObject.GetComponent<Coins>().AddCoin();
+        }                    
+    }
 
     private void OnDrawGizmos()
     {

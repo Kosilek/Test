@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Event : MonoBehaviour
+using UnityEngine.Events;
+public static class Event
 {
-    // Start is called before the first frame update
-    void Start()
+    public static UnityEvent<int> OnScoreCoin = new UnityEvent<int>();
+    public static UnityEvent<float> OnFinishTimer = new UnityEvent<float>();
+    public static UnityEvent OnFinish = new UnityEvent();
+
+    public static void SendScoreCoin(int score)
     {
-        
+        OnScoreCoin.Invoke(score);
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void SendFinishTimer(float timer)
     {
-        
+        OnFinishTimer.Invoke(timer);
+    }
+
+    public static void SendFinish()
+    {
+        OnFinish.Invoke();
     }
 }

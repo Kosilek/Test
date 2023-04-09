@@ -22,6 +22,18 @@ public class Character : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
             return !facingRight;
         }
+        public void Shoot(GameObject bullet, Transform firePoint)
+        {
+            Instantiate(bullet, firePoint.position, firePoint.rotation);
+        }
+
+        public void Death(GameObject gameObject, Animator anim)
+        {
+            gameObject.GetComponent<Collider2D>().isTrigger = true;
+            gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        anim.SetInteger("State", 7);
+            Destroy(gameObject, 1f);
+        }
 
     public void SetAnimaterRun(Animator anim, int speed)
     {
@@ -32,5 +44,10 @@ public class Character : MonoBehaviour
     {
         anim.SetBool("isGrounder", isGrounder);
         anim.SetFloat("vSpeed", rb.velocity.y);
+    }
+
+    public void SetAnimatorDeath(Animator anim)
+    {
+        anim.SetInteger("State", 7);
     }
 }
