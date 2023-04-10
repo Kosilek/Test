@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject[] levelOnject;
+    public GameObject levelObject1;
+    public GameObject levelObject2;
     private int level;
 
     private void Awake()
     {
-        DeactivityLevel();
+       // DeactivityLevel();
         if (PlayerPrefs.HasKey("Level"))
         {
             level = PlayerPrefs.GetInt("Level");
         }
-        levelOnject[level].SetActive(true);
+        ChoiceLevel(level);
+        //Instantiate(levelObject[level]);
     }
 
     public void Restart()
@@ -25,12 +27,38 @@ public class LevelManager : MonoBehaviour
     }
     public void Menu()
     {
+        DestroyLevel(level);
         SceneManager.LoadScene("Menu");
     }
 
-    private void DeactivityLevel()
+  /*  private void DeactivityLevel()
     {
-        levelOnject[0].SetActive(false);
-        levelOnject[1].SetActive(false);
+        Destroy(levelObject1);
+        Destroy(levelObject2);
+    }*/
+
+    private void ChoiceLevel(int level)
+    {
+        switch(level)
+        {
+            case 0:
+                Instantiate(levelObject1);
+                break;
+            case 1:
+                Instantiate(levelObject2);
+                break;
+        }
+    }
+    private void DestroyLevel(int level)
+    {
+        switch (level)
+        {
+            case 0:
+                Instantiate(levelObject1);
+                break;
+            case 1:
+                Instantiate(levelObject2);
+                break;
+        }
     }
 }

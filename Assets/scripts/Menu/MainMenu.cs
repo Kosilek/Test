@@ -12,12 +12,12 @@ public class MainMenu : MonoBehaviour
     public Text recordsTimeText;
     private int recordsScore;
     private float recordsTime;
-
     public Text button3Text;
-
     public GameObject conditionsLevel2;
     public GameObject recordsLevel2;
     public GameObject buttonDifficultyObject;
+    public GameObject Option;
+    public GameObject[] optionButton;
 
 
     private void Start()
@@ -30,60 +30,84 @@ public class MainMenu : MonoBehaviour
         {
             recordsTime = PlayerPrefs.GetFloat("SaveTime");
         }
-        buttonDifficultyObject.SetActive(false);
-        recordsScoreText.text = ("Очки: " + recordsScore);
-        recordsTimeText.text = ("Время: " + recordsTime);
-        records.SetActive(false);
-        recordsLevel2.SetActive(false);
-        conditionsLevel2.SetActive(false);
-        button[2].SetActive(false);
-        button[3].SetActive(false);
+          buttonDifficultyObject.SetActive(false);
+          recordsScoreText.text = ("Очки: " + recordsScore);
+         recordsTimeText.text = ("Время: " + recordsTime);
+         records.SetActive(false);
+          recordsLevel2.SetActive(false);
+          conditionsLevel2.SetActive(false);
+         button[2].SetActive(false);
+         button[3].SetActive(false);
+        optionButton[0].SetActive(false);
+        optionButton[1].SetActive(false);
+        //Instantiate(button[0]);
+        // Instantiate(button[1]);
 
     }
     public void Play()
     {
         button[2].SetActive(true);
-        button[3].SetActive(true);
+       // Instantiate(button[2]);
+          button[3].SetActive(true);
+        //Instantiate(button[3]);
         CheckCoinLevel2(recordsScore);
         records.SetActive(true);
-        button[0].SetActive(false);
-        button[1].SetActive(false);
+        //   Instantiate(records);
+       // Instantiate(recordsTimeText);
+       // Instantiate(recordsScoreText);
+        recordsScoreText.text = ("Очки: " + recordsScore);
+        recordsTimeText.text = ("Время: " + recordsTime);
+        //        records.GetComponent<Text>();
+         button[0].SetActive(false);
+         button[1].SetActive(false);
+        Option.SetActive(false);
+        
+        //Destroy(button[0]);
+       // Destroy(button[1]);
     }
 
     public void Level1()
     {
         button[2].SetActive(false);
+        //Destroy(button[2]);
+        //Destroy(button[3]);
         button[3].SetActive(false);
         conditionsLevel2.SetActive(false);
         records.SetActive(false);
         PlayerPrefs.SetInt("Level", 0);
         buttonDifficultyObject.SetActive(true);
+       // Instantiate(buttonDifficultyObject);
     }
 
     public void Level2()
     {
-        button[2].SetActive(false);
-        button[3].SetActive(false);
-        records.SetActive(false);
-        conditionsLevel2.SetActive(false);
-        PlayerPrefs.SetInt("Level", 1);
-        buttonDifficultyObject.SetActive(true);
+         button[2].SetActive(false);
+       // Destroy(button[2]);
+       // Destroy(button[3]);
+          button[3].SetActive(false);
+          records.SetActive(false);
+         conditionsLevel2.SetActive(false);
+         PlayerPrefs.SetInt("Level", 1);
+         buttonDifficultyObject.SetActive(true);
+        //Instantiate(buttonDifficultyObject);
     }
 
     private void CheckCoinLevel2(int score)
     {
-        if (score >= 19)
+        if (score >= 25)
         {
-            button3Text.color = Color.red;
+              button3Text.color = Color.red;
             recordsLevel2.SetActive(true);
-            // button[3].GetComponent<Text>().color = Color.red;
+           // Instantiate(recordsLevel2);
+           //  button[3].GetComponent<Text>().color = Color.red;
             button[3].GetComponent<Button>().interactable = true;
         }
-        else if (score < 40)
+        else if (score < 25)
         {
-            button3Text.color = Color.white;
+           button3Text.color = Color.white;
             conditionsLevel2.SetActive(true);
-            // button[3].GetComponent<Text>().color = Color.green;
+            //Instantiate(conditionsLevel2);
+          //   button[3].GetComponent<Text>().color = Color.green;
             button[3].GetComponent<Button>().interactable = false;
         }
     }
@@ -104,6 +128,27 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "hard");
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void Options()
+    {
+        optionButton[0].SetActive(true);
+        optionButton[1].SetActive(true);
+        Debug.Log("qqqqq");
+    }
+
+    public void KeyboardOption()
+    {
+        PlayerPrefs.SetString("Option", "keyboard");
+        optionButton[0].SetActive(false);
+        optionButton[1].SetActive(false);
+    }
+
+    public void ButtonOptin()
+    {
+            PlayerPrefs.SetString("Option", "button");
+        optionButton[0].SetActive(false);
+        optionButton[1].SetActive(false);
     }
 
     public void Exit()

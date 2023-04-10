@@ -27,13 +27,13 @@ public class Character : MonoBehaviour
             Instantiate(bullet, firePoint.position, firePoint.rotation);
         }
 
-        public void Death(GameObject gameObject, Animator anim)
+       /* public void Death(GameObject gameObject, Animator anim)
         {
             gameObject.GetComponent<Collider2D>().isTrigger = true;
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        anim.SetInteger("State", 7);
+            anim.SetInteger("State", 7);
             Destroy(gameObject, 1f);
-        }
+        }*/
 
     public void SetAnimaterRun(Animator anim, int speed)
     {

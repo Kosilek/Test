@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     private void CheckingGround()
     {
         RaycastHit2D groundInfo = Physics2D.Raycast(transform.position, Vector2.down, distance);
-        Debug.Log(groundInfo.collider);
+       
         if (groundInfo.collider != null)
         {
             isGrounder = true;
@@ -60,7 +60,17 @@ public class Player : MonoBehaviour
         else if (groundInfo.collider == null) isGrounder = false;
     }
 
+    public void ButtonJump()
+    {
+
+    }
+
     private void FixedUpdate()
+    {
+        MoovPlayerKeyBoard();
+    }
+
+    public void MoovPlayerKeyBoard()
     {
         float direction = Input.GetAxis("Horizontal");
         if (Input.GetAxis("Horizontal") != 0)
@@ -70,6 +80,27 @@ public class Player : MonoBehaviour
             FlipPlayer(direction);
         }
         else character.SetAnimaterRun(anim, 0);
+    }
+
+    public void MoovLeftButton()
+    {
+       // if (facingRight)
+    //        facingRight = character.Flip(transform, facingRight);
+     //   character.SetAnimaterRun(anim, 1);
+        character.Run(rb, speed, -1f);
+    }
+
+    public void MoovRightButton()
+    {
+        if (!facingRight)
+            facingRight = character.Flip(transform, facingRight);
+        character.SetAnimaterRun(anim, 1);
+        character.Run(rb, speed, 1f);
+    }
+
+    public void AttackButton()
+    {
+
     }
 
     private void FlipPlayer(float direction)
@@ -85,24 +116,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<Health>())
-        {
-            gameObject.GetComponent<Health>().TakeDamage(collision.gameObject.GetComponent<Health>().damage, gameObject, gameObject.GetComponent<Health>().anim);
-            if (gameObject.GetComponent<Health>().health <= 0)
-            {
-                
-            }
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Coins>())
         {
+            Debug.Log("Coins");
             collision.gameObject.GetComponent<Coins>().AddCoin();
-        }                    
+        }        
+        
+        if (collision.GetComponent<Health>())
+        {
+            if (collision.gameObject.GetComponent<Enemy>())
+            {
+                Debug.Log("Destory");
+                Destroy(collision.gameObject.GetComponent<DamageObject>());
+                collision.gameObject.GetComponent<Health>().damage = 0;
+                collision.GetComponent<Health>().Death(collision.gameObject, collision.GetComponent<Enemy>().anim);
+            }
+        }
     }
 
     private void OnDrawGizmos()

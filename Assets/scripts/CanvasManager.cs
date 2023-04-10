@@ -20,6 +20,7 @@ public class CanvasManager : MonoBehaviour
     private int hightScore;
     private float hightTimer = 100f;
 
+  
     private void Awake()
     {
         instance = this;
@@ -38,6 +39,8 @@ public class CanvasManager : MonoBehaviour
         Event.OnFinishTimer.AddListener(FinishTimer);
         Event.OnFinish.AddListener(Finish);
     }
+
+   
 
     public void ScoreCoin(int coin)
     {

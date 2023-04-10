@@ -31,7 +31,7 @@ public  class Health : MonoBehaviour
         }
     }
 
-    private void Death(GameObject gameObject, Animator anim)
+    public void Death(GameObject gameObject, Animator anim)
     {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
         gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;

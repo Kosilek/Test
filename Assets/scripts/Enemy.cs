@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     private RaycastHit2D blockInfo;
     private RaycastHit2D playerDetection;
     private Rigidbody2D rb;
-    private Animator anim;
+    public Animator anim;
     [SerializeField] private float speed;
     [SerializeField] private float vSpeed;
     private bool isGrounder;
