@@ -58,20 +58,30 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        character.SetAnimatorJump(anim, isGrounder, rb);
         CheckingGround();
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (optionMoov == "keyboard")
         {
-            character.Jump(rb, vSpeed, isGrounder);
-        }
-
-        if (Input.GetMouseButtonDown(0))
+            character.SetAnimatorJump(anim, isGrounder, rb);          
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                character.Jump(rb, vSpeed, isGrounder);
+            }
+        }   
+        if (optionMoov == "keyboard")
         {
-            character.Shoot(bullet, firePoint);
+            if (Input.GetMouseButtonDown(0))
+            {
+                character.Shoot(bullet, firePoint);
+            }
         }
     }
 
-    private void CheckingGround()
+    public void AttackButton()
+    {
+        character.Shoot(bullet, firePoint);
+    }
+
+    public void CheckingGround()
     {
         RaycastHit2D groundInfo = Physics2D.Raycast(transform.position, Vector2.down, distance);
        
@@ -89,19 +99,28 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        switch (optionMoov)
+        {
+            case "keyboard":
+                MoovPlayerKeyBoard();
+                break;
+            case "button":
+                MoovPlayerBuuton();
+                break;
+        }
+    }
+
+    private void MoovPlayerBuuton()
+    {
         if (direction != 0)
         {
             character.SetAnimaterRun(anim, 1);
             character.Run(rb, speed, direction);
             FlipPlayer(direction);
-        } else character.SetAnimaterRun(anim, 0);
-
-        //  if (facingRight)
-        //      FlipPlayer(direction);
-        // rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else character.SetAnimaterRun(anim, 0);
     }
-
-    public void MoovPlayerKeyBoard()
+    private void MoovPlayerKeyBoard()
     {
         direction = Input.GetAxis("Horizontal");
         if (Input.GetAxis("Horizontal") != 0)
@@ -124,12 +143,7 @@ public class Player : MonoBehaviour
         direction = 1;
     }
 
-    public void AttackButton()
-    {
-
-    }
-
-
+   
     public void Stop()
     {
         direction = 0;
