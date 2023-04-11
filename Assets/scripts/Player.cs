@@ -23,12 +23,34 @@ public class Player : MonoBehaviour
 
     private Animator anim;
 
+    public float direction;
+
+    [SerializeField] private GameObject button;
+
+   // [SerializeField] private Transform spawnButton;
+
+    private string optionMoov;
+  //  [SerializeField] private float horizontalSpeed;
+
     private void Awake()
     {
         Physics2D.queriesStartInColliders = false;
+       if (PlayerPrefs.HasKey("Option"))
+       {
+            optionMoov = PlayerPrefs.GetString("Option");
+        }
     }
     private void Start()
     {
+        switch (optionMoov)
+        {
+            case "keyboard":
+                button.SetActive(false);
+                break;
+            case "button":
+                button.SetActive(true);
+                break;
+        }
         anim = GetComponent<Animator>();
         character = gameManagerObject.GetComponent<Character>();
         rb = GetComponent<Rigidbody2D>();
@@ -62,17 +84,26 @@ public class Player : MonoBehaviour
 
     public void ButtonJump()
     {
-
+        character.Jump(rb, vSpeed, isGrounder);
     }
 
     private void FixedUpdate()
     {
-        MoovPlayerKeyBoard();
+        if (direction != 0)
+        {
+            character.SetAnimaterRun(anim, 1);
+            character.Run(rb, speed, direction);
+            FlipPlayer(direction);
+        } else character.SetAnimaterRun(anim, 0);
+
+        //  if (facingRight)
+        //      FlipPlayer(direction);
+        // rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
     public void MoovPlayerKeyBoard()
     {
-        float direction = Input.GetAxis("Horizontal");
+        direction = Input.GetAxis("Horizontal");
         if (Input.GetAxis("Horizontal") != 0)
         {
             character.SetAnimaterRun(anim, 1);
@@ -84,18 +115,13 @@ public class Player : MonoBehaviour
 
     public void MoovLeftButton()
     {
-       // if (facingRight)
-    //        facingRight = character.Flip(transform, facingRight);
-     //   character.SetAnimaterRun(anim, 1);
-        character.Run(rb, speed, -1f);
+
+        direction = -1;
     }
 
     public void MoovRightButton()
     {
-        if (!facingRight)
-            facingRight = character.Flip(transform, facingRight);
-        character.SetAnimaterRun(anim, 1);
-        character.Run(rb, speed, 1f);
+        direction = 1;
     }
 
     public void AttackButton()
@@ -103,6 +129,11 @@ public class Player : MonoBehaviour
 
     }
 
+
+    public void Stop()
+    {
+        direction = 0;
+    }
     private void FlipPlayer(float direction)
     {
         if (direction > 0 && !facingRight)

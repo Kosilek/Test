@@ -134,7 +134,7 @@ public class MainMenu : MonoBehaviour
     {
         optionButton[0].SetActive(true);
         optionButton[1].SetActive(true);
-        Debug.Log("qqqqq");
+       // Debug.Log("qqqqq");
     }
 
     public void KeyboardOption()
