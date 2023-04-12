@@ -380,13 +380,11 @@
 "Assets/scripts/Event.cs"
 "Assets/scripts/finishPlayer.cs"
 "Assets/scripts/GameMangaer/Character.cs"
-"Assets/scripts/GameMangaer/Damage.cs"
 "Assets/scripts/GameMangaer/Health.cs"
 "Assets/scripts/Interfase.cs"
 "Assets/scripts/LevelManager/LevelManager.cs"
 "Assets/scripts/LevelManager/RespawnPlayer.cs"
 "Assets/scripts/Menu/ButtonCreate.cs"
-"Assets/scripts/Menu/MainMenu(не используется).cs"
 "Assets/scripts/Player.cs"
 "Assets/scripts/SpawnPlayer.cs"
 -langversion:9.0

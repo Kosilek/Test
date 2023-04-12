@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject gameManagerObject;
-    private Character character;
+   // public GameObject gameManagerObject;
+    //private Character character;
     [SerializeField] private float distance;
     [SerializeField] private float rayDistance;
     [SerializeField] private float horizontalDistance;
@@ -34,13 +34,13 @@ public class Enemy : MonoBehaviour
         }
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        character = gameManagerObject.GetComponent<Character>();
+       // character = gameManagerObject.GetComponent<Character>();
         Physics2D.queriesStartInColliders = false;
     }
 
     private void Update()
     {
-        character.SetAnimatorJump(anim, isGrounder, rb);
+        Character.SetAnimatorJump(anim, isGrounder, rb);
 
         groundInfo = Physics2D.Raycast(transform.position, Vector2.down * distance);
 
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
     {
         if (horizontalInfo.collider.gameObject.name == block)
         {
-            character.Jump(rb, vSpeed, isGrounder);
+            Character.Jump(rb, vSpeed, isGrounder);
         }
     }
 
@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
         {
             case "easy":
                 FlipEnemy();
-                character.Run(rb, speed, direction);
+                Character.Run(rb, speed, direction);
                 break;
             case "normal":
                 difficultyEnemy();
@@ -108,12 +108,11 @@ public class Enemy : MonoBehaviour
     {
         FlipEnemyTrigger();
         FlipEnemy();
-        character.Run(rb, speed, direction);
+        Character.Run(rb, speed, direction);
     }
 
     private void FlipEnemyTrigger()
-    {
-        
+    {  
         if (facingRight)
         {
             playerDetection = Physics2D.Raycast(transform.position, transform.localScale.x * Vector2.left, playerDistance);
@@ -126,12 +125,12 @@ public class Enemy : MonoBehaviour
             if (playerDetection.collider.GetComponent<Player>() && !facingRight)
             {
                 direction = 1;
-                facingRight = character.Flip(transform, facingRight);
+                facingRight = Character.Flip(transform, facingRight);
             }
             else if (playerDetection.collider.GetComponent<Player>() && facingRight)
             {
                 direction = -1;
-                facingRight = character.Flip(transform, facingRight);
+                facingRight = Character.Flip(transform, facingRight);
             }
         }
     }
@@ -150,23 +149,23 @@ public class Enemy : MonoBehaviour
             if (blockInfo.collider.name == "Ground" &&  !facingRight)
             {
                 direction = 1;
-                facingRight = character.Flip(transform, facingRight);
+                facingRight = Character.Flip(transform, facingRight);
             } else if (blockInfo.collider.name == "Ground" && facingRight)
             {
                 direction = -1;
-                facingRight = character.Flip(transform, facingRight);
+                facingRight = Character.Flip(transform, facingRight);
             }
         }
         if (cliffInfo == false  && !facingRight)
         {
             direction = 1;
-            facingRight = character.Flip(transform, facingRight);
+            facingRight = Character.Flip(transform, facingRight);
 
         }
         else if (cliffInfo == false && facingRight)
         {
             direction = -1;
-            facingRight = character.Flip(transform, facingRight);
+            facingRight = Character.Flip(transform, facingRight);
         }
     }
 

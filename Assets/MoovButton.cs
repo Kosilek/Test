@@ -4,7 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class MoovButton : MonoBehaviour
-{
+{ }
+/*
     public GameObject player;
     private Player playerScript;
 
@@ -32,5 +33,5 @@ public class MoovButton : MonoBehaviour
     public void Stop()
     {
         player.GetComponent<Player>().direction = 0;
-    }
-}
+    }*/
+

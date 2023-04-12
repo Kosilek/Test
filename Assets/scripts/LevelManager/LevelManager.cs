@@ -11,13 +11,11 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-       // DeactivityLevel();
         if (PlayerPrefs.HasKey("Level"))
         {
             level = PlayerPrefs.GetInt("Level");
         }
         ChoiceLevel(level);
-        //Instantiate(levelObject[level]);
     }
 
     public void Restart()
@@ -30,12 +28,6 @@ public class LevelManager : MonoBehaviour
         DestroyLevel(level);
         SceneManager.LoadScene("Menu");
     }
-
-  /*  private void DeactivityLevel()
-    {
-        Destroy(levelObject1);
-        Destroy(levelObject2);
-    }*/
 
     private void ChoiceLevel(int level)
     {

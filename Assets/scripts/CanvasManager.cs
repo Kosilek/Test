@@ -20,7 +20,7 @@ public class CanvasManager : MonoBehaviour
     private int hightScore;
     private float hightTimer = 100f;
 
-  
+ 
     private void Awake()
     {
         instance = this;
@@ -40,14 +40,10 @@ public class CanvasManager : MonoBehaviour
         Event.OnFinish.AddListener(Finish);
     }
 
-   
-
     public void ScoreCoin(int coin)
     {
-
         score = score + coin;
         scoreText.text = ("Score: " + score.ToString());
-
     }
 
     public void Finish()
@@ -78,6 +74,7 @@ public class CanvasManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("SaveScore", hightScore);
     }
+
     public void HightTime()
     {
         if (hightTimer > finishTimer)

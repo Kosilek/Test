@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+
 public static class Event
 {
     public static UnityEvent<int> OnScoreCoin = new UnityEvent<int>();
@@ -22,4 +24,6 @@ public static class Event
     {
         OnFinish.Invoke();
     }
+
+    
 }
