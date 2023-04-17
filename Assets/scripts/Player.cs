@@ -19,9 +19,10 @@ public class Player : MonoBehaviour
     private Animator anim;
     public float direction;
     private string optionMoov;
-    [SerializeField] private Sprite image;
-    [SerializeField] private Sprite imageAttack;
-    [SerializeField] private Transform[] spawnBlock;
+    //  [SerializeField] private Sprite image;
+    //  [SerializeField] private Sprite imageAttack;
+    //   [SerializeField] private Transform[] spawnBlock;
+    [SerializeField] GameObject buttonCntr;
 
     private void Awake()
     {
@@ -37,6 +38,14 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (optionMoov == "button")
         {
+            buttonCntr.SetActive(true);
+        }
+        else if (optionMoov == "keyboard")
+        {
+            buttonCntr.SetActive(false);
+        }
+      /*  if (optionMoov == "button")
+        {
           CreateButtonControl("Left", spawnBlock[0], 90, image);
             CreateEventButton(GameObject.Find("Left"));
           CreateButtonControl("Right", spawnBlock[1], -90, image);
@@ -45,10 +54,10 @@ public class Player : MonoBehaviour
             CreateEventButton(GameObject.Find("Jump"));
           CreateButtonControl("Attack", spawnBlock[3], 0, imageAttack);
             CreateEventButton(GameObject.Find("Attack"));
-        }
+        }*/
     }
 
-    private void CreateEventButton(GameObject button)
+  /*  private void CreateEventButton(GameObject button)
     {
         EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -76,7 +85,7 @@ public class Player : MonoBehaviour
         entryStop.callback.AddListener(Stop);
         trigger.triggers.Add(entry);
         trigger.triggers.Add(entryStop);
-    }
+    }*/
 
     private void Update()
     {
@@ -95,7 +104,7 @@ public class Player : MonoBehaviour
         }   
     }
 
-    public void AttackButton(BaseEventData pointData)
+    public void AttackButton()
     {
         Character.Shoot(bullet, firePoint);
     }
@@ -111,8 +120,9 @@ public class Player : MonoBehaviour
         else if (groundInfo.collider == null) isGrounder = false;
     }
 
-    public void ButtonJump(BaseEventData pointData)
+    public void ButtonJump()
     {
+      //  rb = GetComponent<Rigidbody2D>();
         Character.Jump(rb, vSpeed, isGrounder);
     }
 
@@ -137,21 +147,21 @@ public class Player : MonoBehaviour
             FlipPlayer(direction);
     }
 
-    public void MoovLeftButton(BaseEventData pointData)
+    public void MoovLeftButton()
     {
 
         direction = -1;
         FlipPlayer(direction);
     }
 
-    public void MoovRightButton(BaseEventData pointData)
+    public void MoovRightButton()
     {
         direction = 1;
         FlipPlayer(direction);
     }
-
+    
    
-    public void Stop(BaseEventData pointData)
+    public void Stop()
     {
         direction = 0;
     }
@@ -188,7 +198,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void CreateButtonControl(string nameButton, Transform spawnBlock, float rotationZ, Sprite sprite)
+    /*private void CreateButtonControl(string nameButton, Transform spawnBlock, float rotationZ, Sprite sprite)
     {
         GameObject newButton = new GameObject(nameButton, typeof(Image), typeof(Button), typeof(LayoutElement), typeof(EventTrigger));
         newButton.transform.SetParent(spawnBlock);
@@ -200,7 +210,7 @@ public class Player : MonoBehaviour
         rtButton.sizeDelta = new Vector2(0, 0);
         newButton.GetComponent<Image>().sprite = sprite;
         newButton.transform.Rotate(0f, 0f, rotationZ);
-    }
+    }*/
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

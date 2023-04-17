@@ -24,13 +24,13 @@ public class CanvasManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        if (PlayerPrefs.HasKey("SaveScore"))
+        if (PlayerPrefs.HasKey($"SaveScore{PlayerPrefs.GetInt("Level")}"))
         {
-            hightScore = PlayerPrefs.GetInt("SaveScore");
+            hightScore = PlayerPrefs.GetInt($"SaveScore{PlayerPrefs.GetInt("Level")}");
         }
-        if (PlayerPrefs.HasKey("SaveTime"))
+        if (PlayerPrefs.HasKey($"SaveTime{PlayerPrefs.GetInt("Level")}"))
         {
-            hightTimer = PlayerPrefs.GetFloat("SaveTime");
+            hightTimer = PlayerPrefs.GetFloat($"SaveTime{PlayerPrefs.GetInt("Level")}");
         }
         finishText.SetActive(false);
         records.SetActive(false);
@@ -72,7 +72,7 @@ public class CanvasManager : MonoBehaviour
         {
             hightScore = score;
         }
-        PlayerPrefs.SetInt("SaveScore", hightScore);
+        PlayerPrefs.SetInt($"SaveScore{PlayerPrefs.GetInt("Level")}", hightScore);
     }
 
     public void HightTime()
@@ -81,6 +81,6 @@ public class CanvasManager : MonoBehaviour
         {
             hightTimer = finishTimer;
         }
-        PlayerPrefs.SetFloat("SaveTime", hightTimer);
+        PlayerPrefs.SetFloat($"SaveTime{PlayerPrefs.GetInt("Level")}", hightTimer);
     }
 }

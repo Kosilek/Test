@@ -384,7 +384,12 @@
 "Assets/scripts/Interfase.cs"
 "Assets/scripts/LevelManager/LevelManager.cs"
 "Assets/scripts/LevelManager/RespawnPlayer.cs"
-"Assets/scripts/Menu/ButtonCreate.cs"
+"Assets/scripts/Menu/ButtonCreate(Не используется).cs"
+"Assets/scripts/Menu/CanvasMenuPanelCntr.cs"
+"Assets/scripts/Menu/LevelPanel.cs"
+"Assets/scripts/Menu/MenuPanel.cs"
+"Assets/scripts/Menu/scorePanel.cs"
+"Assets/scripts/Menu/SettingsScripts.cs"
 "Assets/scripts/Player.cs"
 "Assets/scripts/SpawnPlayer.cs"
 -langversion:9.0
