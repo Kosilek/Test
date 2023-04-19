@@ -6,10 +6,16 @@ using UnityEngine.UI;
 public  class Health : MonoBehaviour
 {
     public Animator anim;
+    public float maxHealth;
     public float health;
     public float damage;
     [SerializeField]Image _image;
     [SerializeField] float fill = 1f;
+
+    private void Start()
+    {
+        health = maxHealth;
+    }
 
     private void Update()
     {
@@ -19,7 +25,7 @@ public  class Health : MonoBehaviour
     public void TakeDamage(float damage, GameObject gameObject, Animator anim)
     {
         health -= damage;
-        fill = (health / 100);
+        fill = ((health * 100) / maxHealth) / 100;
         if (health > 0)
         {
             anim.SetBool("Hit", true);

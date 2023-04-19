@@ -79,6 +79,9 @@
     <Compile Include="Assets\scripts\Bullet2D.cs" />
     <Compile Include="Assets\scripts\Menu\MenuPanel.cs" />
     <Compile Include="Assets\scripts\LevelManager\RespawnPlayer.cs" />
+    <Compile Include="Assets\scripts\Teleport.cs" />
+    <Compile Include="Assets\scripts\TriggerEmptyWall.cs" />
+    <Compile Include="Assets\scripts\spawnSpikes.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

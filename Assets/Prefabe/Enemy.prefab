@@ -233,9 +233,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 7395446903812050550}
+  maxHealth: 0
   health: 100
   damage: 1
-  _image: {fileID: 8052653506107580533}
+  _image: {fileID: 58263375075484695}
   fill: 1
 --- !u!114 &-4304779788330991539
 MonoBehaviour:
@@ -397,16 +398,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 675859301297307807, guid: 899acc4bf0e25c94187282ab11ce52d4, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 899acc4bf0e25c94187282ab11ce52d4, type: 3}
---- !u!224 &8052653505337320748 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 675859301297307805, guid: 899acc4bf0e25c94187282ab11ce52d4, type: 3}
-  m_PrefabInstance: {fileID: 7395446904585659825}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8052653506107580533 stripped
+--- !u!114 &58263375075484695 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 675859301059757508, guid: 899acc4bf0e25c94187282ab11ce52d4, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7381146892892963238, guid: 899acc4bf0e25c94187282ab11ce52d4, type: 3}
   m_PrefabInstance: {fileID: 7395446904585659825}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -415,3 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &8052653505337320748 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 675859301297307805, guid: 899acc4bf0e25c94187282ab11ce52d4, type: 3}
+  m_PrefabInstance: {fileID: 7395446904585659825}
+  m_PrefabAsset: {fileID: 0}

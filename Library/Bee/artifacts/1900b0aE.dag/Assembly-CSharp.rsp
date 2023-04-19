@@ -392,6 +392,9 @@
 "Assets/scripts/Menu/SettingsScripts.cs"
 "Assets/scripts/Player.cs"
 "Assets/scripts/SpawnPlayer.cs"
+"Assets/scripts/spawnSpikes.cs"
+"Assets/scripts/Teleport.cs"
+"Assets/scripts/TriggerEmptyWall.cs"
 -langversion:9.0
 
 /deterministic

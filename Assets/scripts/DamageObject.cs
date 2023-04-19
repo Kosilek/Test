@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class DamageObject : MonoBehaviour
 {
@@ -24,7 +25,17 @@ public class DamageObject : MonoBehaviour
             if (!collision.gameObject.GetComponent<Enemy>())
             {
                 collision.gameObject.GetComponent<Health>().TakeDamage(damage, collision.gameObject, collision.gameObject.GetComponent<Health>().anim);
-                Debug.Log("Damag");
+                Debug.Log("Damage");
+            }
+
+            if (gameObject.GetComponent<DamageObject>().name == "SpikedBall(Clone)")
+            {
+                Debug.Log("qqqq");
+                if (collision.gameObject.GetComponent<Collider2D>())
+                {
+                    Debug.Log("wwwwwwww");
+                    Destroy(gameObject);
+                }
             }
             
         }

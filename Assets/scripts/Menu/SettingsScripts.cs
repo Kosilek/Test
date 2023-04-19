@@ -14,6 +14,14 @@ public class SettingsScripts : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("Option"))
+        {
+            optionSave = PlayerPrefs.GetString("Option");
+        }
+        if (PlayerPrefs.HasKey("Difficulty"))
+        {
+            optionDifficutlySave = PlayerPrefs.GetString("Difficulty");
+        }
         questionPanel.SetActive(false);
     }
     public void KeyBoard()
