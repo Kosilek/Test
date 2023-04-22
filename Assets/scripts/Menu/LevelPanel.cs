@@ -39,11 +39,11 @@ public class LevelPanel : MonoBehaviour
         {
             if (PlayerPrefs.HasKey("SaveScore"))
             {
-                if (PlayerPrefs.GetInt($"SaveScore{x - 1}") < 20)
+                if (PlayerPrefs.GetInt($"SaveScore{x - 1}") < 10)
                 {
                     check = false;
                 }
-                else if (PlayerPrefs.GetInt($"SaveScore{x - 1}") > 20)
+                else if (PlayerPrefs.GetInt($"SaveScore{x - 1}") > 10)
                 {
                     check = true;
                 }

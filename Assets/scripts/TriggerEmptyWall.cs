@@ -7,18 +7,15 @@ public class TriggerEmptyWall : MonoBehaviour
 
     [SerializeField] private GameObject wall;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>())
         {
-            if (wall.activeInHierarchy)
-            {
-                wall.SetActive(false);
-            }
-            else if (!wall.activeInHierarchy)
-            {
-                wall.SetActive(true);
-            }
+           wall.SetActive(false);
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        wall.SetActive(true);
     }
 }

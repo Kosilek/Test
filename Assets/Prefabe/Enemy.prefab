@@ -138,7 +138,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0015876293, y: -0.12161729}
+  m_Offset: {x: 0.0015876293, y: -0.12321946}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -149,7 +149,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6920018, y: 0.7567654}
+  m_Size: {x: 0.6920018, y: 0.7535611}
   m_EdgeRadius: 0
 --- !u!61 &7395446903812050442
 BoxCollider2D:
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0066509247, y: 0.32728037}
+  m_Offset: {x: -0.0098695755, y: 0.2751953}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6158638, y: 0.1448583}
+  m_Size: {x: 0.56207085, y: 0.054303765}
   m_EdgeRadius: 0
 --- !u!50 &7395446903812050443
 Rigidbody2D:
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 7395446903812050550}
-  maxHealth: 0
+  maxHealth: 100
   health: 100
   damage: 1
   _image: {fileID: 58263375075484695}
@@ -251,6 +251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  detroyOnDamage: 0
+  ignor: 0
 --- !u!95 &7395446903812050550
 Animator:
   serializedVersion: 5

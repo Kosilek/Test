@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public GameObject levelObject1;
     public GameObject levelObject2;
+    public GameObject levelObject3;
     private int level;
 
     private void Awake()
@@ -38,6 +39,9 @@ public class LevelManager : MonoBehaviour
                 break;
             case 1:
                 Instantiate(levelObject2);
+                break;
+                case 2:
+                Instantiate(levelObject3);
                 break;
         }
     }

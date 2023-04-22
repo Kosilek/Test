@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 40
+  detroyOnDamage: 1
+  ignor: 0
 --- !u!114 &2487919409197085901
 MonoBehaviour:
   m_ObjectHideFlags: 0
