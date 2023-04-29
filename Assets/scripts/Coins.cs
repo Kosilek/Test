@@ -15,7 +15,6 @@ public class Coins : MonoBehaviour
     public void AddCoin()
     {
         Event.SendScoreCoin(count);
-        anim.SetBool("Destroy", true);
-        Destroy(gameObject, 1f);
+        ObjectManagment.Destroy(gameObject, anim);
     }
 }

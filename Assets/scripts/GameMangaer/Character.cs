@@ -22,6 +22,11 @@ public class Character : MonoBehaviour
             rb.velocity = new Vector2(speed * direction, rb.velocity.y);
         }
 
+    public static void Fall(Rigidbody2D rb, float fall)
+    {
+        rb.velocity = new Vector2 (rb.velocity.x, fall);
+    }
+
         public static void Jump(Rigidbody2D rb, float vSpeed, bool isGrounder)
         {
             if (isGrounder)

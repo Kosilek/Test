@@ -8,6 +8,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(UnityEngine.EventSystems.EventTrigger))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float fall;
     public GameObject bullet;
     public Transform firePoint;
     private Rigidbody2D rb;
@@ -24,6 +25,10 @@ public class Player : MonoBehaviour
     //   [SerializeField] private Transform[] spawnBlock;
     [SerializeField] GameObject buttonCntr;
 
+    [SerializeField] private float timerSpeedMax;
+    [SerializeField]private float timerSpeed;
+    private float startSpeed;
+    public GameObject checkingWall;
     private void Awake()
     {
         Physics2D.queriesStartInColliders = false;
@@ -34,6 +39,7 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
+        startSpeed = speed;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         if (optionMoov == "button")
@@ -56,6 +62,14 @@ public class Player : MonoBehaviour
             CreateEventButton(GameObject.Find("Attack"));
         }*/
     }
+
+    
+
+  /*  public Vector3 GetPlayerTransform()
+    {
+        return transform.position;
+    }*/
+
 
   /*  private void CreateEventButton(GameObject button)
     {
@@ -137,7 +151,13 @@ public class Player : MonoBehaviour
             Character.Run(rb, speed, direction);
         }
 
-
+            if (timerSpeed > 0)
+        {
+            timerSpeed--;
+        } else if (timerSpeed == 0)
+        {
+            speed = startSpeed;
+        }
     }
 
     private void MoovPlayerKeyBoard()
@@ -178,6 +198,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Coins>())
@@ -196,6 +218,11 @@ public class Player : MonoBehaviour
                 collision.GetComponent<Health>().Death(collision.gameObject, collision.GetComponent<Enemy>().anim);
             }
         }
+    }
+
+    public void SpeedBonus()
+    {
+        timerSpeed = timerSpeedMax;
     }
 
     /*private void CreateButtonControl(string nameButton, Transform spawnBlock, float rotationZ, Sprite sprite)

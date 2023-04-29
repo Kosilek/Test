@@ -58,8 +58,10 @@
   <ItemGroup>
     <Compile Include="Assets\MoovButton.cs" />
     <Compile Include="Assets\scripts\finishPlayer.cs" />
+    <Compile Include="Assets\scripts\LevelManager\TimeLevel.cs" />
     <Compile Include="Assets\scripts\GameMangaer\Character.cs" />
     <Compile Include="Assets\scripts\Menu\SettingsScripts.cs" />
+    <Compile Include="Assets\scripts\DieBlock.cs" />
     <Compile Include="Assets\scripts\Menu\ButtonCreate(Не используется).cs" />
     <Compile Include="Assets\scripts\CanvasManager.cs" />
     <Compile Include="Assets\scripts\GameMangaer\Health.cs" />
@@ -77,14 +79,16 @@
     <Compile Include="Assets\scripts\Interfase.cs" />
     <Compile Include="Assets\playerButton.cs" />
     <Compile Include="Assets\scripts\Event.cs" />
+    <Compile Include="Assets\scripts\Camera\CameraMoovTime.cs" />
     <Compile Include="Assets\scripts\TriggerEmptyWall.cs" />
     <Compile Include="Assets\scripts\Player.cs" />
     <Compile Include="Assets\scripts\Bullet2D.cs" />
     <Compile Include="Assets\scripts\Menu\MenuPanel.cs" />
     <Compile Include="Assets\scripts\LevelManager\RespawnPlayer.cs" />
-    <Compile Include="Assets\scripts\DieBlock.cs" />
-    <Compile Include="Assets\scripts\LevelManager\TimeLevel.cs" />
-    <Compile Include="Assets\scripts\Camera\CameraMoovTime.cs" />
+    <Compile Include="Assets\scripts\Buff_Healthh.cs" />
+    <Compile Include="Assets\scripts\ObjectManagment.cs" />
+    <Compile Include="Assets\scripts\buffSpeed.cs" />
+    <Compile Include="Assets\scripts\ControlPlayerStatistics.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

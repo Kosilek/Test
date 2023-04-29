@@ -19,13 +19,13 @@ public  class Health : MonoBehaviour
 
     private void Update()
     {
-        _image.fillAmount = fill;
+        ImageFill();
     }
 
     public void TakeDamage(float damage, GameObject gameObject, Animator anim)
     {
         health -= damage;
-        fill = ((health * 100) / maxHealth) / 100;
+        
         if (health > 0)
         {
             anim.SetBool("Hit", true);
@@ -35,6 +35,12 @@ public  class Health : MonoBehaviour
         {
             Death(gameObject, anim);
         }
+    }
+
+    public void ImageFill()
+    {
+        _image.fillAmount = fill;
+        fill = ((health * 100) / maxHealth) / 100;
     }
 
     public void Death(GameObject gameObject, Animator anim)
