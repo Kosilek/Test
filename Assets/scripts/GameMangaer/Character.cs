@@ -2,21 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : Singletone<Character>
 {
-    public static Character instance = null;
 
-    private void Start()
+    protected override void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        } else if (instance == this)
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
     }
+
     public static void Run(Rigidbody2D rb, float speed, float direction)
         {
             rb.velocity = new Vector2(speed * direction, rb.velocity.y);
@@ -47,12 +40,12 @@ public class Character : MonoBehaviour
 
     public static void SetAnimatorJump(Animator anim, bool isGrounder, Rigidbody2D rb)
     {
-        anim.SetBool("isGrounder", isGrounder);
-        anim.SetFloat("vSpeed", rb.velocity.y);
+        anim.SetBool(MeaningString.isGrounder, isGrounder);
+        anim.SetFloat(MeaningString.vSpeed, rb.velocity.y);
     }
 
     public static void SetAnimatorDeath(Animator anim)
     {
-        anim.SetInteger("State", 7);
+        anim.SetInteger(MeaningString.state, 7);
     }
 }

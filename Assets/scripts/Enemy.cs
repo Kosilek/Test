@@ -28,9 +28,9 @@ public class Enemy : MonoBehaviour
     string difficulty;
     private void Start()
     {
-        if (PlayerPrefs.HasKey("Difficulty"))
+        if (PlayerPrefsSave.HasKey(MeaningString.difficulty))
         {
-            difficulty = PlayerPrefs.GetString("Difficulty");
+            difficulty = PlayerPrefsSave.GetString(MeaningString.difficulty);
         }
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
     {
         if (horizontalInfo)
         {
-            CheckBlock(horizontalInfo, "Ground");
+            CheckBlock(horizontalInfo, MeaningString.ground);
         }
     }
 
@@ -146,11 +146,11 @@ public class Enemy : MonoBehaviour
         }
         if (blockInfo)
         {
-            if (blockInfo.collider.name == "Ground" &&  !facingRight)
+            if (blockInfo.collider.name == MeaningString.ground &&  !facingRight)
             {
                 direction = 1;
                 facingRight = Character.Flip(transform, facingRight);
-            } else if (blockInfo.collider.name == "Ground" && facingRight)
+            } else if (blockInfo.collider.name == MeaningString.ground && facingRight)
             {
                 direction = -1;
                 facingRight = Character.Flip(transform, facingRight);

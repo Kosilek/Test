@@ -22,17 +22,17 @@ public class scorePanel : MonoBehaviour
 
     private string Records(int i, string score, string time)
     {
-        if (PlayerPrefs.HasKey(score))
+        if (PlayerPrefsSave.HasKey(score))
         {
-            recordsScore[i] = PlayerPrefs.GetInt(score);
+            recordsScore[i] = PlayerPrefsSave.GetInt(score);
         }
         else
         {
             recordsScore[i] = 0;
         }
-        if (PlayerPrefs.HasKey(time))
+        if (PlayerPrefsSave.HasKey(time))
         {
-            recordsTime[i] = PlayerPrefs.GetFloat(time);
+            recordsTime[i] = PlayerPrefsSave.GetFloat(time);
         }
         else recordsTime[i] = 0;
   //      if (recordsScore[i] == null && recordsTime[0] == null)

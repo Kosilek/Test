@@ -14,43 +14,43 @@ public class SettingsScripts : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("Option"))
+        if (PlayerPrefsSave.HasKey(MeaningString.option))
         {
-            optionSave = PlayerPrefs.GetString("Option");
+            optionSave = PlayerPrefsSave.GetString(MeaningString.option);
         }
-        if (PlayerPrefs.HasKey("Difficulty"))
+        if (PlayerPrefsSave.HasKey(MeaningString.difficulty))
         {
-            optionDifficutlySave = PlayerPrefs.GetString("Difficulty");
+            optionDifficutlySave = PlayerPrefsSave.GetString(MeaningString.difficulty);
         }
         questionPanel.SetActive(false);
     }
     public void KeyBoard()
     {
-        optionSave = "keyboard";
+        optionSave = MeaningString.keyboard;
     }
 
     public void ButtonGame()
     {
-        optionSave = "button";
+        optionSave = MeaningString.button;
     }
     public void EasyDifficulty()
     {
-        optionDifficutlySave = "easy";
+        optionDifficutlySave = MeaningString.easy;
     }
 
     public void NormalDifficulty()
     {
-        optionDifficutlySave = "normal";
+        optionDifficutlySave = MeaningString.normal;
     }
 
     public void HardDifficulty()
     {
-        optionDifficutlySave = "hard";
+        optionDifficutlySave = MeaningString.hard;
     }
 
     public void Back()
     {
-        if (optionSave == PlayerPrefs.GetString("Option") && optionDifficutlySave == PlayerPrefs.GetString("Difficulty"))
+        if (optionSave == PlayerPrefsSave.GetString(MeaningString.option) && optionDifficutlySave == PlayerPrefsSave.GetString(MeaningString.difficulty))
         {
             settingsPanel.SetActive(false);
             menuPanel.SetActive(true);
@@ -62,7 +62,7 @@ public class SettingsScripts : MonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetString("Option", optionSave);
-        PlayerPrefs.SetString("Difficulty", optionDifficutlySave);
+        PlayerPrefsSave.SetString(MeaningString.option, optionSave);
+        PlayerPrefsSave.SetString(MeaningString.difficulty, optionDifficutlySave);
     }
 }

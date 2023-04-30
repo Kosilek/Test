@@ -28,8 +28,8 @@ public  class Health : MonoBehaviour
         
         if (health > 0)
         {
-            anim.SetBool("Hit", true);
-           Invoke("NotHit", 0.6f);
+            anim.SetBool(MeaningString.hit, true);
+           Invoke(MeaningString.notHit, 0.6f);
         }
         if (health <= 0)
         {
@@ -51,12 +51,12 @@ public  class Health : MonoBehaviour
         }
         gameObject.GetComponent<Collider2D>().isTrigger = true;
         gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        anim.SetInteger("State", 7);
+        anim.SetInteger(MeaningString.state, 7);
         Destroy(gameObject, 1f);
     }
 
    private void NotHit()
     {
-        anim.SetBool("Hit", false);
+        anim.SetBool(MeaningString.hit, false);
     }
 }

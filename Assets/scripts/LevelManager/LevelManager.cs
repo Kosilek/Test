@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singletone<LevelManager>
 {
     public GameObject levelObject1;
     public GameObject levelObject2;
     public GameObject levelObject3;
     private int level;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (PlayerPrefs.HasKey("Level"))
+        base.Awake();
+        if (PlayerPrefsSave.HasKey(MeaningString.level))
         {
-            level = PlayerPrefs.GetInt("Level");
+            level = PlayerPrefsSave.GetInt(MeaningString.level);
         }
         ChoiceLevel(level);
     }
@@ -27,7 +28,7 @@ public class LevelManager : MonoBehaviour
     public void Menu()
     {
         DestroyLevel(level);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(MeaningString.menu);
     }
 
     private void ChoiceLevel(int level)

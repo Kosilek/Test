@@ -28,8 +28,8 @@ public class LevelPanel : MonoBehaviour
 
     private void StartLevel(int x)
     {
-        PlayerPrefs.SetInt("Level", x);
-        SceneManager.LoadScene("SampleScene");
+        PlayerPrefsSave.SetInt(MeaningString.level, x);
+        SceneManager.LoadScene(MeaningString.sampleScene);
     }
 
     private bool CheckLevel(int x)
@@ -37,13 +37,13 @@ public class LevelPanel : MonoBehaviour
         bool check = true;
         if (x != 0)
         {
-            if (PlayerPrefs.HasKey("SaveScore"))
+            if (PlayerPrefsSave.HasKey(MeaningString.saveScore))
             {
-                if (PlayerPrefs.GetInt($"SaveScore{x - 1}") < 10)
+                if (PlayerPrefsSave.GetInt($"{MeaningString.saveScore}{x - 1}") < 10)
                 {
                     check = false;
                 }
-                else if (PlayerPrefs.GetInt($"SaveScore{x - 1}") > 10)
+                else if (PlayerPrefsSave.GetInt($"{MeaningString.saveScore}{x - 1}") > 10)
                 {
                     check = true;
                 }

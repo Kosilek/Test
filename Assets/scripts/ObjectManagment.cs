@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectManagment : MonoBehaviour
+public class ObjectManagment : Singletone<ObjectManagment>
 {
-    public static ObjectManagment instance = null;
 
-    private void Start()
+    protected override void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance == this)
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
     }
 
     public static void Destroy(GameObject gameObject, Animator anim)
     {
-        anim.SetBool("Destroy", true);
+        anim.SetBool(MeaningString.destroy, true);
         Destroy(gameObject, 0.5f);
     }
 }

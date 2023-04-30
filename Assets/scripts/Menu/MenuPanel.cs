@@ -15,12 +15,12 @@ public class MenuPanel : MonoBehaviour
 
     public void PlayLevel()
     {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(MeaningString.sampleScene);
     }
 
     private void CheckLevel()
     {
-        if (PlayerPrefs.HasKey("Level"))
+        if (PlayerPrefs.HasKey(MeaningString.level))
         {
             button.GetComponent<Button>().interactable = true;
         }

@@ -32,9 +32,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Physics2D.queriesStartInColliders = false;
-       if (PlayerPrefs.HasKey("Option"))
+       if (PlayerPrefsSave.HasKey(MeaningString.option))
        {
-            optionMoov = PlayerPrefs.GetString("Option");
+            optionMoov = PlayerPrefsSave.GetString(MeaningString.option);
         }
     }
     private void Start()
@@ -42,11 +42,11 @@ public class Player : MonoBehaviour
         startSpeed = speed;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        if (optionMoov == "button")
+        if (optionMoov == MeaningString.button)
         {
             buttonCntr.SetActive(true);
         }
-        else if (optionMoov == "keyboard")
+        else if (optionMoov == MeaningString.keyboard)
         {
             buttonCntr.SetActive(false);
         }
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
     {
         CheckingGround();
         Character.SetAnimatorJump(anim, isGrounder, rb);
-        if (optionMoov == "keyboard")
+        if (optionMoov == MeaningString.keyboard)
         {           
             if (Input.GetMouseButtonDown(0))
             {
@@ -142,11 +142,11 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        anim.SetFloat("speed", Mathf.Abs(direction));
-            if(optionMoov == "keyboard")
+        anim.SetFloat(MeaningString.speed, Mathf.Abs(direction));
+            if(optionMoov == MeaningString.keyboard)
         {
             MoovPlayerKeyBoard();
-        }else if (optionMoov == "button")
+        }else if (optionMoov == MeaningString.button)
         {
             Character.Run(rb, speed, direction);
         }
@@ -162,7 +162,7 @@ public class Player : MonoBehaviour
 
     private void MoovPlayerKeyBoard()
     {
-        direction = Input.GetAxis("Horizontal");         
+        direction = Input.GetAxis(MeaningString.horizontal);         
             Character.Run(rb, speed, direction);
             FlipPlayer(direction);
     }
@@ -204,7 +204,6 @@ public class Player : MonoBehaviour
     {
         if (collision.GetComponent<Coins>())
         {
-            Debug.Log("Coins");
             collision.gameObject.GetComponent<Coins>().AddCoin();
         }        
         
@@ -212,7 +211,6 @@ public class Player : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Enemy>())
             {
-                Debug.Log("Destory");
                 Destroy(collision.gameObject.GetComponent<DamageObject>());
                 collision.gameObject.GetComponent<Health>().damage = 0;
                 collision.GetComponent<Health>().Death(collision.gameObject, collision.GetComponent<Enemy>().anim);

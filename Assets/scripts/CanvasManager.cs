@@ -24,13 +24,13 @@ public class CanvasManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        if (PlayerPrefs.HasKey($"SaveScore{PlayerPrefs.GetInt("Level")}"))
+        if (PlayerPrefsSave.HasKey($"SaveScore{PlayerPrefsSave.GetInt(MeaningString.level)}"))
         {
-            hightScore = PlayerPrefs.GetInt($"SaveScore{PlayerPrefs.GetInt("Level")}");
+            hightScore = PlayerPrefsSave.GetInt($"SaveScore{PlayerPrefsSave.GetInt(MeaningString.level)}");
         }
-        if (PlayerPrefs.HasKey($"SaveTime{PlayerPrefs.GetInt("Level")}"))
+        if (PlayerPrefsSave.HasKey($"SaveTime{PlayerPrefsSave.GetInt(MeaningString.level)}"))
         {
-            hightTimer = PlayerPrefs.GetFloat($"SaveTime{PlayerPrefs.GetInt("Level")}");
+            hightTimer = PlayerPrefsSave.GetFloat($"SaveTime{PlayerPrefsSave.GetInt(MeaningString.level)}");
         }
         finishText.SetActive(false);
         records.SetActive(false);
@@ -72,7 +72,7 @@ public class CanvasManager : MonoBehaviour
         {
             hightScore = score;
         }
-        PlayerPrefs.SetInt($"SaveScore{PlayerPrefs.GetInt("Level")}", hightScore);
+        PlayerPrefs.SetInt($"SaveScore{PlayerPrefsSave.GetInt(MeaningString.level)}", hightScore);
     }
 
     public void HightTime()
@@ -81,6 +81,6 @@ public class CanvasManager : MonoBehaviour
         {
             hightTimer = finishTimer;
         }
-        PlayerPrefs.SetFloat($"SaveTime{PlayerPrefs.GetInt("Level")}", hightTimer);
+        PlayerPrefs.SetFloat($"SaveTime{PlayerPrefsSave.GetInt(MeaningString.level)}", hightTimer);
     }
 }
