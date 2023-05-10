@@ -13,7 +13,7 @@ public class RespawnPlayer : MonoBehaviour
     }
     private void Update()
     {
-        if (GameObject.Find("Player(Clone)") == null)
+        if (LevelManager.playerSave == null)
         {
             button[0].SetActive(true); button[1].SetActive(true);
         }

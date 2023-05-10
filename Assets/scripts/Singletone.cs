@@ -41,7 +41,7 @@ public class Singletone<T> : MonoBehaviour where T : MonoBehaviour
             }
         }
 
-        DontDestroyOnLoad(this.gameObject);
+     //   DontDestroyOnLoad(this.gameObject);
 
         if (!_instance)
             _instance = this as T;

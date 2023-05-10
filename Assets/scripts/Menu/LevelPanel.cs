@@ -14,6 +14,7 @@ public class LevelPanel : MonoBehaviour
     private void Start()
     {
         CreatButtonLevel(6); // изменить цифру при увеличении уровней (Создать доп панели или прокрутку при кол-во уровней превышающем длину экрана)
+        Debug.Log("Создание уровней");
     }
 
     private void CreatButtonLevel(int level)

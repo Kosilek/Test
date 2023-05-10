@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public GameObject checkingWall;
     private void Awake()
     {
+        LevelManager.playerSave = gameObject;
         Physics2D.queriesStartInColliders = false;
        if (PlayerPrefsSave.HasKey(MeaningString.option))
        {
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
         {
             buttonCntr.SetActive(false);
         }
+        
       /*  if (optionMoov == "button")
         {
           CreateButtonControl("Left", spawnBlock[0], 90, image);
@@ -103,6 +105,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+         LevelManager.playerSave.transform.position = transform.position;
+       // LevelManager.playerSave = gameObject;
         CheckingGround();
         Character.SetAnimatorJump(anim, isGrounder, rb);
         if (optionMoov == MeaningString.keyboard)

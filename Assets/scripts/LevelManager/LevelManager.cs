@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class LevelManager : Singletone<LevelManager>
 {
     public GameObject levelObject1;
     public GameObject levelObject2;
     public GameObject levelObject3;
+    public GameObject player;
+    public static GameObject playerSave;
     private int level;
 
     protected override void Awake()
     {
+        playerSave = player;
         base.Awake();
         if (PlayerPrefsSave.HasKey(MeaningString.level))
         {

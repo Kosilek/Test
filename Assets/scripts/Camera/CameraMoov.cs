@@ -18,7 +18,10 @@ public class CameraMoov : MonoBehaviour
 
     public void FindPlayer(bool playerIsLeft)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = LevelManager.playerSave.transform;
+        Debug.Log("Привязка камерпы");
+        Debug.Log($"player = = {player.position}");
         lastX = Mathf.RoundToInt(player.position.x);
         if (playerIsLeft)
         {

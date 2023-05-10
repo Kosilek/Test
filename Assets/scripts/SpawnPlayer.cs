@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class SpawnPlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
 
     private void Awake()
     {
-        Instantiate(player, transform.position, transform.rotation);
+        Instantiate(LevelManager.playerSave, transform.position, transform.rotation);
     }
 }

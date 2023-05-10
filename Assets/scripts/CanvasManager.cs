@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasManager : MonoBehaviour
+public class CanvasManager : Singletone<CanvasManager>
 {
-    public static CanvasManager instance;
     public Text scoreText;
     public GameObject finishText;
     public Text finishScoreText;
@@ -21,9 +20,9 @@ public class CanvasManager : MonoBehaviour
     private float hightTimer = 100f;
 
  
-    private void Awake()
+    protected override void Awake()
     {
-        instance = this;
+        base.Awake();
         if (PlayerPrefsSave.HasKey($"SaveScore{PlayerPrefsSave.GetInt(MeaningString.level)}"))
         {
             hightScore = PlayerPrefsSave.GetInt($"SaveScore{PlayerPrefsSave.GetInt(MeaningString.level)}");
@@ -51,8 +50,8 @@ public class CanvasManager : MonoBehaviour
         finishScore = score;
         finishText.SetActive(true);
         records.SetActive(true);
-        instance.HightScore();
-        instance.HightTime();
+        //instance.HightScore();
+       // instance.HightTime();
         finishScoreText.text = ("Ваши очки: " + finishScore.ToString());
         finishTimerText.text = ("Ваше время: " + finishTimer.ToString());
         recordsScoreText.text = ("Очки: " + hightScore.ToString());
