@@ -20,14 +20,12 @@ public class Player : MonoBehaviour
     private Animator anim;
     public float direction;
     private string optionMoov;
-    //  [SerializeField] private Sprite image;
-    //  [SerializeField] private Sprite imageAttack;
-    //   [SerializeField] private Transform[] spawnBlock;
+    [HideInInspector] public bool checkFinish = false;
     [SerializeField] GameObject buttonCntr;
 
     [SerializeField] private float timerSpeedMax;
     [SerializeField]private float timerSpeed;
-    private float startSpeed;
+    public float startSpeed;
     public GameObject checkingWall;
     private void Awake()
     {
@@ -51,65 +49,14 @@ public class Player : MonoBehaviour
         {
             buttonCntr.SetActive(false);
         }
-        
-      /*  if (optionMoov == "button")
-        {
-          CreateButtonControl("Left", spawnBlock[0], 90, image);
-            CreateEventButton(GameObject.Find("Left"));
-          CreateButtonControl("Right", spawnBlock[1], -90, image);
-            CreateEventButton(GameObject.Find("Right"));
-          CreateButtonControl("Jump", spawnBlock[2], 0, image);
-            CreateEventButton(GameObject.Find("Jump"));
-          CreateButtonControl("Attack", spawnBlock[3], 0, imageAttack);
-            CreateEventButton(GameObject.Find("Attack"));
-        }*/
     }
-
-    
-
-  /*  public Vector3 GetPlayerTransform()
-    {
-        return transform.position;
-    }*/
-
-
-  /*  private void CreateEventButton(GameObject button)
-    {
-        EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerDown;
-        entry.callback = new EventTrigger.TriggerEvent();
-        EventTrigger.Entry entryStop = new EventTrigger.Entry();
-        entryStop.eventID = EventTriggerType.PointerUp;
-        entryStop.callback = new EventTrigger.TriggerEvent();
-        if (button == GameObject.Find("Left"))
-        {
-            entry.callback.AddListener(MoovLeftButton);
-        }
-        if (button == GameObject.Find("Right"))
-        {
-            entry.callback.AddListener(MoovRightButton);
-        }
-        if (button == GameObject.Find("Jump"))
-        {
-            entry.callback.AddListener(ButtonJump);
-        }
-        if (button == GameObject.Find("Attack"))
-        {
-            entry.callback.AddListener(AttackButton);
-        }
-        entryStop.callback.AddListener(Stop);
-        trigger.triggers.Add(entry);
-        trigger.triggers.Add(entryStop);
-    }*/
 
     private void Update()
     {
          LevelManager.playerSave.transform.position = transform.position;
-       // LevelManager.playerSave = gameObject;
         CheckingGround();
         Character.SetAnimatorJump(anim, isGrounder, rb);
-        if (optionMoov == MeaningString.keyboard)
+        if (optionMoov == MeaningString.keyboard && checkFinish == false)
         {           
             if (Input.GetMouseButtonDown(0))
             {
@@ -140,17 +87,16 @@ public class Player : MonoBehaviour
 
     public void ButtonJump()
     {
-      //  rb = GetComponent<Rigidbody2D>();
         Character.Jump(rb, vSpeed, isGrounder);
     }
 
     private void FixedUpdate()
     {
         anim.SetFloat(MeaningString.speed, Mathf.Abs(direction));
-            if(optionMoov == MeaningString.keyboard)
+            if(optionMoov == MeaningString.keyboard && checkFinish == false)
         {
             MoovPlayerKeyBoard();
-        }else if (optionMoov == MeaningString.button)
+        }else if (optionMoov == MeaningString.button && checkFinish == false)
         {
             Character.Run(rb, speed, direction);
         }
@@ -226,20 +172,6 @@ public class Player : MonoBehaviour
     {
         timerSpeed = timerSpeedMax;
     }
-
-    /*private void CreateButtonControl(string nameButton, Transform spawnBlock, float rotationZ, Sprite sprite)
-    {
-        GameObject newButton = new GameObject(nameButton, typeof(Image), typeof(Button), typeof(LayoutElement), typeof(EventTrigger));
-        newButton.transform.SetParent(spawnBlock);
-        newButton.GetComponent<RectTransform>().position = new Vector3(spawnBlock.position.x, spawnBlock.position.y, spawnBlock.position.z);
-        RectTransform rtButton = newButton.GetComponent<RectTransform>();
-        rtButton.anchorMin = new Vector2(0, 0);
-        rtButton.anchorMax = new Vector2(1, 1);
-        rtButton.anchoredPosition = new Vector2(0, 0);
-        rtButton.sizeDelta = new Vector2(0, 0);
-        newButton.GetComponent<Image>().sprite = sprite;
-        newButton.transform.Rotate(0f, 0f, rotationZ);
-    }*/
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MenuPanel : MonoBehaviour
 {
     public GameObject button;
+    public GameObject loadScene;
 
     private void Start()
     {
@@ -15,7 +16,9 @@ public class MenuPanel : MonoBehaviour
 
     public void PlayLevel()
     {
-            SceneManager.LoadScene(MeaningString.sampleScene);
+        // SceneManager.LoadScene(MeaningString.sampleScene);
+        Instantiate(loadScene, gameObject.transform.position, gameObject.transform.rotation);
+        StartCoroutine(LoadScene.LoadAsync());
     }
 
     private void CheckLevel()

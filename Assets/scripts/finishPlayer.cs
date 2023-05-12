@@ -19,6 +19,10 @@ public class finishPlayer : MonoBehaviour
             timerFinishPlayer = timerStart;
             Event.SendFinishTimer(timerFinishPlayer);
             Event.SendFinish();
+            collision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            collision.GetComponent<Player>().direction = 0f;
+            Destroy(collision.GetComponent<Player>());
+
         }
     }
 }

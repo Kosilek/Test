@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Assets\MoovButton.cs" />
     <Compile Include="Assets\scripts\finishPlayer.cs" />
-    <Compile Include="Assets\scripts\LevelManager\TimeLevel.cs" />
     <Compile Include="Assets\scripts\PlayerPrefs\PlayerPrefsSave.cs" />
     <Compile Include="Assets\scripts\GameMangaer\Character.cs" />
     <Compile Include="Assets\scripts\ControlPlayerStatistics.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="Assets\scripts\SpawnPlayer.cs" />
     <Compile Include="Assets\scripts\Menu\LevelPanel.cs" />
     <Compile Include="Assets\scripts\ObjectManagment.cs" />
-    <Compile Include="Assets\scripts\Interfase.cs" />
     <Compile Include="Assets\playerButton.cs" />
     <Compile Include="Assets\scripts\Event.cs" />
     <Compile Include="Assets\scripts\PlayerPrefs\MeaningString.cs" />
@@ -92,6 +90,8 @@
     <Compile Include="Assets\scripts\Bullet2D.cs" />
     <Compile Include="Assets\scripts\Menu\MenuPanel.cs" />
     <Compile Include="Assets\scripts\LevelManager\RespawnPlayer.cs" />
+    <Compile Include="Assets\scripts\LoadScene\LoadScene.cs" />
+    <Compile Include="Assets\scripts\LoadScene\CntrLoadScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
