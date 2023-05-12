@@ -526,6 +526,7 @@ MonoBehaviour:
   levelObject2: {fileID: 8703120133490875876, guid: 29ea4e073ac88d845acce9bcd0fa8dbd, type: 3}
   levelObject3: {fileID: 4308901845205850612, guid: 35caa603929c0df449bfe508d950edf5, type: 3}
   player: {fileID: 709829482687803214, guid: 0ed5de758e20e3f41b70148ef42bbf01, type: 3}
+  loadScene: {fileID: 603769111174520461, guid: 3cd89154e2505574bafef56898bd9a8c, type: 3}
 --- !u!4 &908184315
 Transform:
   m_ObjectHideFlags: 0

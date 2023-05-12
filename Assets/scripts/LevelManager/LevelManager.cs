@@ -10,6 +10,7 @@ public class LevelManager : Singletone<LevelManager>
     public GameObject levelObject2;
     public GameObject levelObject3;
     public GameObject player;
+    public GameObject loadScene;
     public static GameObject playerSave;
     private int level;
 
@@ -27,12 +28,18 @@ public class LevelManager : Singletone<LevelManager>
     public void Restart()
     {
         string scene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(scene);
+        CntrButton(scene);
     }
     public void Menu()
     {
-        DestroyLevel(level);
-        SceneManager.LoadScene(MeaningString.menu);
+      //  DestroyLevel(level);
+        CntrButton(MeaningString.menu);
+    }
+
+    private void CntrButton(string scene)
+    {
+        StartCoroutine(LoadScene.LoadAsync(scene));
+        Instantiate(loadScene, gameObject.transform.position, gameObject.transform.rotation);
     }
 
     private void ChoiceLevel(int level)
@@ -50,16 +57,16 @@ public class LevelManager : Singletone<LevelManager>
                 break;
         }
     }
-    private void DestroyLevel(int level)
+   /* private void DestroyLevel(int level)
     {
         switch (level)
         {
             case 0:
-                Instantiate(levelObject1);
+                Destroy(levelObject1);
                 break;
             case 1:
-                Instantiate(levelObject2);
+                Destroy(levelObject2);
                 break;
         }
-    }
+    }*/
 }

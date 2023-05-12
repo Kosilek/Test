@@ -65,8 +65,7 @@ public class LevelPanel : MonoBehaviour
         PlayerPrefsSave.SetInt(MeaningString.level, x);
         levelPanelScroll.SetActive(false);
         Instantiate(loadScene, gameObject.transform.position, gameObject.transform.rotation);
-       //  SceneManager.LoadScene(MeaningString.sampleScene);
-         StartCoroutine(LoadScene.LoadAsync());
+         StartCoroutine(LoadScene.LoadAsync(MeaningString.sampleScene));
         
     }
 

@@ -18,7 +18,7 @@ public class MenuPanel : MonoBehaviour
     {
         // SceneManager.LoadScene(MeaningString.sampleScene);
         Instantiate(loadScene, gameObject.transform.position, gameObject.transform.rotation);
-        StartCoroutine(LoadScene.LoadAsync());
+        StartCoroutine(LoadScene.LoadAsync(MeaningString.sampleScene));
     }
 
     private void CheckLevel()

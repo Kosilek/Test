@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public static class LoadScene
 {
     public static bool endOfLoading = false;
-    public static IEnumerator LoadAsync()
+    public static IEnumerator LoadAsync(string level)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MeaningString.sampleScene);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(level);
 
         asyncLoad.allowSceneActivation = false;
 
