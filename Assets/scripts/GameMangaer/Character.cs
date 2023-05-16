@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Character : Singletone<Character>
 {
+    public static int playersSelect;
 
     protected override void Awake()
     {
         base.Awake();
+        if (PlayerPrefs.HasKey(MeaningString.playerSelect))
+        {
+            playersSelect = PlayerPrefs.GetInt(MeaningString.playerSelect);
+        }
     }
 
     public static void Run(Rigidbody2D rb, float speed, float direction)

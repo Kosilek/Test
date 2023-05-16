@@ -169,18 +169,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e98fcd773232f4cb1fb55649bed046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fall: 1
-  bullet: {fileID: 3896814421633883523, guid: a6e220586f7349c42ae527285782cc5d, type: 3}
-  firePoint: {fileID: 709829483151029057}
   speed: 4
-  facingRight: 1
   vSpeed: 700
   distance: 0.97
-  isGrounder: 1
+  checkFinish: 0
   direction: 0
-  buttonCntr: {fileID: 7789375867561231607}
   timerSpeedMax: 200
   timerSpeed: 0
+  animVoodoo: {fileID: 9100000, guid: 529f4bbeb5b2de940a5581cc6d9f31ba, type: 2}
+  animDragon: {fileID: 9100000, guid: 4061b4c5f92ca954f86211d4ae676e80, type: 2}
+  animKnight: {fileID: 0}
+  buttonCntr: {fileID: 7789375867561231607}
+  bullet: {fileID: 3896814421633883523, guid: a6e220586f7349c42ae527285782cc5d, type: 3}
+  firePoint: {fileID: 709829483151029057}
   checkingWall: {fileID: 0}
 --- !u!114 &709829482687803206
 MonoBehaviour:

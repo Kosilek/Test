@@ -5,28 +5,30 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.Animations;
 [RequireComponent(typeof(UnityEngine.EventSystems.EventTrigger))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float fall;
-    public GameObject bullet;
-    public Transform firePoint;
-    private Rigidbody2D rb;
+    private float startSpeed;
+    private bool facingRight = true;
+    private bool isGrounder;
+    private string optionMoov; 
     public float speed;
-    [SerializeField]private bool facingRight = true;
     public float vSpeed;
     public float distance;
-    [SerializeField]private bool isGrounder;
+    private Rigidbody2D rb;
     private Animator anim;
-    public float direction;
-    private string optionMoov;
     [HideInInspector] public bool checkFinish = false;
-    [SerializeField] GameObject buttonCntr;
-
+    [HideInInspector] public float direction;
     [SerializeField] private float timerSpeedMax;
     [SerializeField]private float timerSpeed;
-    public float startSpeed;
-    public GameObject checkingWall;
+  //  [SerializeField] private RuntimeAnimatorController animVoodoo;
+  //  [SerializeField] private RuntimeAnimatorController animDragon;
+ //   [SerializeField] private RuntimeAnimatorController animKnight;
+    [SerializeField] GameObject buttonCntr;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform firePoint;
+
     private void Awake()
     {
         LevelManager.playerSave = gameObject;
@@ -34,7 +36,20 @@ public class Player : MonoBehaviour
        if (PlayerPrefsSave.HasKey(MeaningString.option))
        {
             optionMoov = PlayerPrefsSave.GetString(MeaningString.option);
-        }
+       }
+     /*  switch(Character.playersSelect)
+        {
+                case 0:
+            anim.GetComponent<Animator>().runtimeAnimatorController = animVoodoo;
+            break; 
+                case 1:
+            anim.GetComponent<Animator>().runtimeAnimatorController = animDragon;
+            break;*/
+         //       case 2:
+         //   anim.GetComponent<Animator>().runtimeAnimatorController = animKnight;
+          //  break;
+
+      //  }
     }
     private void Start()
     {

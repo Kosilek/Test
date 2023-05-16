@@ -71,7 +71,7 @@ public class LevelPanel : MonoBehaviour
 
     private string TakeRecords(int i)
     {
-        return Records(0, $"SaveScore{i}", $"SaveTime{i}");
+        return Records(0, $"{MeaningString.saveScore}{i}", $"{MeaningString.saveTime}{i}");
         //Получение рекордов ост уровней;
     }
 

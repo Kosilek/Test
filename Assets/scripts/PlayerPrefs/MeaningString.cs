@@ -25,4 +25,6 @@ public static class MeaningString
     public static string ground = "Ground";
     public static string sampleScene = "SampleScene";
     public static string saveScore = "SaveScore";
+    public static string saveTime = "SaveTime";
+    public static string playerSelect = "PlayerSelect";
 }
